@@ -13,6 +13,7 @@ app.use(cors());
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var asiakasRouter = require('./routes/asiakas');
+var tiliRouter = require('./routes/tili');
 
 
 
@@ -25,5 +26,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/asiakas', asiakasRouter);
+app.use('/tili', tiliRouter);
 
 module.exports = app;
