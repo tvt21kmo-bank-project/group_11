@@ -1,0 +1,19 @@
+{
+  "name": "group_11",
+  "version": "1.0.0",
+  "description": "Mysql käyttäjä:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tvt21kmo-bank-project/group_11.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tvt21kmo-bank-project/group_11/issues"
+  },
+  "homepage": "https://github.com/tvt21kmo-bank-project/group_11#readme"
+}
