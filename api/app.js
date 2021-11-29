@@ -14,6 +14,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var asiakasRouter = require('./routes/asiakas');
 var tiliRouter = require('./routes/tili');
+var tilitapahtumatRouter = require('./routes/tilitapahtumat');
 
 
 
@@ -27,5 +28,6 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/asiakas', asiakasRouter);
 app.use('/tili', tiliRouter);
+app.use('/tilitapahtumat', tilitapahtumatRouter);
 
 module.exports = app;
