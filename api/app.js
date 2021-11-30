@@ -15,6 +15,7 @@ var usersRouter = require('./routes/users');
 var asiakasRouter = require('./routes/asiakas');
 var tiliRouter = require('./routes/tili');
 var tilitapahtumatRouter = require('./routes/tilitapahtumat');
+var korttiRouter = require('./routes/kortti');
 
 
 
@@ -29,5 +30,6 @@ app.use('/users', usersRouter);
 app.use('/asiakas', asiakasRouter);
 app.use('/tili', tiliRouter);
 app.use('/tilitapahtumat', tilitapahtumatRouter);
+app.use('/kortti', korttiRouter);
 
 module.exports = app;
