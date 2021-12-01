@@ -9,6 +9,8 @@ var app = express();
 
 app.use(helmet());
 app.use(cors());
+const dotenv = require('dotenv');
+dotenv.config();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
