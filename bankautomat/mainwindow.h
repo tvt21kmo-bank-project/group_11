@@ -18,8 +18,15 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+private slots:
+    void on_btnLogin_clicked();
+    void loginSlot (QNetworkReply *reply);
+
 private:
     Ui::MainWindow *ui;
+    QNetworkAccessManager *manager;
+    QNetworkAccessManager *loginManager;
+    QNetworkReply *reply;
 };
 
 #endif // MAINWINDOW_H
