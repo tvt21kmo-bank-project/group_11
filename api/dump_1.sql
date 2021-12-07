@@ -126,7 +126,7 @@ CREATE TABLE `tili` (
 
 LOCK TABLES `tili` WRITE;
 /*!40000 ALTER TABLE `tili` DISABLE KEYS */;
-INSERT INTO `tili` VALUES (2,1,'1000',97,'Credit',111),(3,1,'1000',123,'Debit',111),(4,1,'1000',122,'credit',111),(5,2,'11111',122,'Both',111),(6,2,'22222',92,'both',111),(7,2,'22222',0,'Debit',111),(8,2,'22222',9,'debit',111);
+INSERT INTO `tili` VALUES (2,1,'1000',97,'Credit',111),(3,1,'1000',123,'Debit',111),(4,1,'1000',122,'credit',111),(5,2,'11111',122,'Both',111),(6,2,'22222',92,'both',111),(7,2,'22222',0,'Debit',111),(8,2,'22222',7,'debit',111);
 /*!40000 ALTER TABLE `tili` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,7 +147,7 @@ CREATE TABLE `tilitapahtumat` (
   PRIMARY KEY (`idTilitapahtumat`),
   KEY `fk_Tilitapahtumat_Tili1_idx` (`idTili`,`idKortti`),
   CONSTRAINT `fk_Tilitapahtumat_Tili1` FOREIGN KEY (`idTili`) REFERENCES `tili` (`idTili`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,7 +156,7 @@ CREATE TABLE `tilitapahtumat` (
 
 LOCK TABLES `tilitapahtumat` WRITE;
 /*!40000 ALTER TABLE `tilitapahtumat` DISABLE KEYS */;
-INSERT INTO `tilitapahtumat` VALUES (4,'2021-12-02 19:37:52','Nosto',1,2,3),(5,'2021-12-02 19:40:55','Nosto',10,2,3),(6,'2021-12-02 19:41:31','Nosto',112,2,3),(7,'2021-12-02 19:44:08','Nosto',100,2,3),(8,'2021-12-02 19:44:21','Nosto',11,2,3),(9,'2021-12-02 19:50:13','Nosto',100,2,3),(10,'2021-12-02 19:50:33','Nosto',111,2,3),(11,'2021-12-02 20:00:51','Nosto',1,2,3),(12,'2021-12-02 20:09:05','Nosto',1,2,3),(13,'2021-12-02 20:09:49','Nosto',1,4,3),(14,'2021-12-03 16:02:01','Nosto',1,2,3),(15,'2021-12-03 16:05:05','Nosto',1,5,4),(16,'2021-12-03 16:06:25','Nosto',1,6,5),(17,'2021-12-03 16:11:30','Nosto',15,6,5),(18,'2021-12-03 16:14:50','Nosto',10,7,6),(19,'2021-12-03 16:16:04','Nosto',113,7,6),(20,'2021-12-03 16:16:26','Nosto',113,8,7),(21,'2021-12-03 16:18:10','credit_Nosto',15,6,5),(22,'2021-12-03 16:18:23','debit_Nosto',1,8,7);
+INSERT INTO `tilitapahtumat` VALUES (4,'2021-12-02 19:37:52','Nosto',1,2,3),(5,'2021-12-02 19:40:55','Nosto',10,2,3),(6,'2021-12-02 19:41:31','Nosto',112,2,3),(7,'2021-12-02 19:44:08','Nosto',100,2,3),(8,'2021-12-02 19:44:21','Nosto',11,2,3),(9,'2021-12-02 19:50:13','Nosto',100,2,3),(10,'2021-12-02 19:50:33','Nosto',111,2,3),(11,'2021-12-02 20:00:51','Nosto',1,2,3),(12,'2021-12-02 20:09:05','Nosto',1,2,3),(13,'2021-12-02 20:09:49','Nosto',1,4,3),(14,'2021-12-03 16:02:01','Nosto',1,2,3),(15,'2021-12-03 16:05:05','Nosto',1,5,4),(16,'2021-12-03 16:06:25','Nosto',1,6,5),(17,'2021-12-03 16:11:30','Nosto',15,6,5),(18,'2021-12-03 16:14:50','Nosto',10,7,6),(19,'2021-12-03 16:16:04','Nosto',113,7,6),(20,'2021-12-03 16:16:26','Nosto',113,8,7),(21,'2021-12-03 16:18:10','credit_Nosto',15,6,5),(22,'2021-12-03 16:18:23','debit_Nosto',1,8,7),(23,'2021-12-07 21:04:59','debit_Nosto',2,8,7);
 /*!40000 ALTER TABLE `tilitapahtumat` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -173,7 +173,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`test_user2`@`localhost` PROCEDURE `credit_nosto`(IN first_id INT, IN second_id INT, IN Summa DOUBLE )
+CREATE DEFINER=`root`@`localhost` PROCEDURE `credit_nosto`(IN first_id INT, IN second_id INT, IN Summa DOUBLE )
 BEGIN
   DECLARE test1 INT DEFAULT 0;
   START TRANSACTION;
@@ -201,7 +201,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`test_user2`@`localhost` PROCEDURE `debit_nosto`(IN first_id INT, IN second_id INT, IN Summa DOUBLE )
+CREATE DEFINER=`root`@`localhost` PROCEDURE `debit_nosto`(IN first_id INT, IN second_id INT, IN Summa DOUBLE )
 BEGIN
   DECLARE test1 INT DEFAULT 0;
   START TRANSACTION;
@@ -229,4 +229,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-03 16:36:26
+-- Dump completed on 2021-12-07 21:11:36
