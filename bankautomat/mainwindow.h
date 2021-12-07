@@ -7,6 +7,7 @@
 #include <QJsonDocument>
 #include "valikko.h"
 
+
 namespace Ui {
 class MainWindow;
 }
@@ -31,6 +32,7 @@ private:
     QNetworkAccessManager *loginManager;
     QNetworkReply *reply;
     valikko *objValikko;
+
 };
 
 #endif // MAINWINDOW_H

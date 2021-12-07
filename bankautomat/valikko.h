@@ -5,6 +5,7 @@
 #include <QtNetwork>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
+#include "pankki.h"
 
 namespace Ui {
 class valikko;
@@ -33,6 +34,7 @@ private slots:
 
 private:
     Ui::valikko *ui;
+    Pankki *objPankki;
 };
 
 #endif // VALIKKO_H

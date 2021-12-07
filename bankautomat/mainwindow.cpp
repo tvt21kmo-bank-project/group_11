@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     objValikko=new valikko;
+
 }
 
 MainWindow::~MainWindow()
@@ -15,6 +16,7 @@ MainWindow::~MainWindow()
     ui = nullptr;
     delete objValikko;
     objValikko = nullptr;
+
 }
 
 void MainWindow::on_btnLogin_clicked()
@@ -44,6 +46,7 @@ void MainWindow::loginSlot(QNetworkReply *reply)
         objValikko->showFullScreen();
         ui->lineEditKorttinumero->setText("");
         ui->lineEditPIN->setText("");
+        ui->labelLoginInfo->setText("");
     }
     else if(response_data=="false") {
         ui->lineEditKorttinumero->setText("");
