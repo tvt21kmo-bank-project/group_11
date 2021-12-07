@@ -6,11 +6,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    objValikko=new valikko;
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    ui = nullptr;
+    delete objValikko;
+    objValikko = nullptr;
 }
 
 void MainWindow::on_btnLogin_clicked()
@@ -37,6 +41,26 @@ void MainWindow::loginSlot(QNetworkReply *reply)
     qDebug()<<response_data;
     if(response_data=="true"){
         qDebug()<<"Oikea tunnus, kirjaudutaan...";
+        objValikko->showFullScreen();
+        ui->lineEditKorttinumero->setText("");
+        ui->lineEditPIN->setText("");
+    }
+    else if(response_data=="false") {
+        ui->lineEditKorttinumero->setText("");
+        ui->lineEditPIN->setText("");
+        qDebug()<<"tunnus ja salasana ei täsmää";
+        ui->labelLoginInfo->setText("Tunnus ja salasana ei täsmää");
+    }
+    else {
+        ui->lineEditKorttinumero->setText("");
+        ui->lineEditPIN->setText("");
+        ui->labelLoginInfo->setText("Virhe tietokantayhteydessä");
+
     }
 
+}
+
+void MainWindow::on_btnLoginClose_clicked()
+{
+    this->close();
 }
