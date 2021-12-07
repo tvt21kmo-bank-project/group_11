@@ -25,10 +25,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    valikko.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    valikko.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    valikko.ui
