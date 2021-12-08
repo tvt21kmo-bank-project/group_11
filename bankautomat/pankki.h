@@ -5,6 +5,8 @@
 #include <QtNetwork>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
+//#include <QTimer>
+//#include <QObject>
 
 namespace Ui {
 class Pankki;
@@ -24,6 +26,7 @@ private slots:
 
     void creditSlot(QNetworkReply *reply);
     void debitSlot(QNetworkReply *reply);
+    void TimerSlot();
 
     void on_btnNosto_10_clicked();
 
@@ -46,6 +49,11 @@ private:
     QNetworkReply *reply;
     QString idTili;
     QString idKortti;
+    QTimer *objQTimer;
+    short timerCounter;
+
+//signals:
+    //void    finishProgram();
 
 };
 

@@ -31,12 +31,15 @@ private slots:
     void on_btnSelaaTilitapahtumia_clicked();
 
     void on_btnKirjauduUlos_clicked();
+    void TimerSlot();
 
 private:
     Ui::valikko *ui;
     Pankki *objPankki;
     QString idTili;
     QString idKortti;
+    QTimer *objQTimer;
+    short timerCounter;
 };
 
 #endif // VALIKKO_H
