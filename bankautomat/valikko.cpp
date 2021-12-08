@@ -1,13 +1,17 @@
 #include "valikko.h"
 #include "ui_valikko.h"
 
-valikko::valikko(QWidget *parent) :
+valikko::valikko(QString idTili, QString idKortti, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::valikko)
 {
+    this->idTili=idTili;
+    this->idKortti=idKortti;
     ui->setupUi(this);
-    objPankki=new Pankki;
+    qDebug()<<"valikko "+this->idTili;
+
 }
+
 
 valikko::~valikko()
 {
@@ -25,7 +29,8 @@ void valikko::on_btnValikkoClose_clicked()
 
 void valikko::on_btnNostaRahaa_clicked()
 {
-    objPankki->showFullScreen();
+    objPankki=new Pankki(this->idTili, this->idKortti);
+    objPankki->show();
 }
 
 void valikko::on_btnNaytaSaldo_clicked()
