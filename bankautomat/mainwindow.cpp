@@ -36,6 +36,7 @@ void MainWindow::on_btnLogin_clicked()
     this, SLOT(loginSlot(QNetworkReply*)));
     reply = loginManager->post(request, QJsonDocument(json).toJson());
 }
+int count = 0;
 
 void MainWindow::loginSlot(QNetworkReply *reply)
 {
@@ -59,7 +60,14 @@ void MainWindow::loginSlot(QNetworkReply *reply)
         ui->lineEditPIN->setText("");
         qDebug()<<"tunnus ja salasana ei täsmää";
         ui->labelLoginInfo->setText("Tunnus ja salasana ei täsmää");
+    count ++;
+    if (count == 3){
+            ui->labelLoginInfo->setText("Kortti lukittu");
+            count = 0;
+       }
     }
+
+
     else {
         ui->lineEditKorttinumero->setText("");
         ui->lineEditPIN->setText("");
@@ -68,6 +76,20 @@ void MainWindow::loginSlot(QNetworkReply *reply)
     }
 
 }
+
+//int count = 0;
+//for(;;)
+//{
+//    ask_password();
+//    if (password == expected_password)
+//        break;
+//    count++;
+//    if (count == 3)
+//    {
+//       Sleep(300000);    // 5 minutes = 300000 ms.
+//       count = 0;
+//    }
+//}
 
 void MainWindow::on_btnLoginClose_clicked()
 {
