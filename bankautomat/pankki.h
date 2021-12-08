@@ -15,7 +15,7 @@ class Pankki : public QDialog
     Q_OBJECT
 
 public:
-    explicit Pankki(QWidget *parent = 0);
+    explicit Pankki(QString idTili, QString idKortti, QWidget *parent = 0);
     ~Pankki();
 
 private slots:
@@ -25,11 +25,27 @@ private slots:
     void creditSlot(QNetworkReply *reply);
     void debitSlot(QNetworkReply *reply);
 
+    void on_btnNosto_10_clicked();
+
+    void on_btnNosto_20_clicked();
+
+    void on_btnNosto_40_clicked();
+
+    void on_btnNosto_60_clicked();
+
+    void on_btnNosto_100_clicked();
+
+    void on_btnNosto_200_clicked();
+
+    void on_btnNosto_500_clicked();
+
 private:
     Ui::Pankki *ui;
     QNetworkAccessManager *creditManager;
     QNetworkAccessManager *debitManager;
     QNetworkReply *reply;
+    QString idTili;
+    QString idKortti;
 
 };
 

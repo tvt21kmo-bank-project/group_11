@@ -16,7 +16,7 @@ class valikko : public QDialog
     Q_OBJECT
 
 public:
-    explicit valikko(QWidget *parent = 0);
+    explicit valikko(QString idTili, QString idKortti, QWidget *parent = 0);
     ~valikko();
 
 private slots:
@@ -35,6 +35,8 @@ private slots:
 private:
     Ui::valikko *ui;
     Pankki *objPankki;
+    QString idTili;
+    QString idKortti;
 };
 
 #endif // VALIKKO_H

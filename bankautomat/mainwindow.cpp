@@ -6,7 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    objValikko=new valikko;
+
 
 }
 
@@ -40,13 +40,19 @@ void MainWindow::on_btnLogin_clicked()
 void MainWindow::loginSlot(QNetworkReply *reply)
 {
     QByteArray response_data=reply->readAll();
-    qDebug()<<response_data;
-    if(response_data=="true"){
+    QJsonDocument j_doc = QJsonDocument::fromJson(response_data);
+    QJsonObject j_obj = j_doc.object();
+    QString idTili = QString::number(j_obj["idTili"].toInt());
+    QString idKortti = QString::number(j_obj["idKortti"].toInt());
+    qDebug()<<idTili;
+    objValikko=new valikko(idTili, idKortti);
+    if(response_data !="false"){
         qDebug()<<"Oikea tunnus, kirjaudutaan...";
-        objValikko->showFullScreen();
+        objValikko->show();
         ui->lineEditKorttinumero->setText("");
         ui->lineEditPIN->setText("");
         ui->labelLoginInfo->setText("");
+
     }
     else if(response_data=="false") {
         ui->lineEditKorttinumero->setText("");
