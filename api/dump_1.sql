@@ -89,7 +89,7 @@ CREATE TABLE `kortti` (
   KEY `fk_Kortti_Tili1_idx` (`idTili`),
   CONSTRAINT `fk_kortti_asiakas1` FOREIGN KEY (`idAsiakas`) REFERENCES `asiakas` (`idAsiakas`),
   CONSTRAINT `fk_Kortti_Tili1` FOREIGN KEY (`idTili`) REFERENCES `tili` (`idTili`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +98,7 @@ CREATE TABLE `kortti` (
 
 LOCK TABLES `kortti` WRITE;
 /*!40000 ALTER TABLE `kortti` DISABLE KEYS */;
-INSERT INTO `kortti` VALUES (3,'16546465464','$2a$10$Hmd1fX1KrrNOYtE7CkoLu.latbj6xMIYfBNict.Oo7QEahMBGZS5a',1,2),(4,'123456','$2a$10$VI5uWICs0TLpUT.tAVCctOVFbVgoMs1CmFR1Bj4QvI41NptfNc6gK',2,5),(5,'1234567','$2a$10$HDYhGg9mRqVL7J1qPdA6Kevn70qePPvUOJVJmTniW9UtsBjP2Vo1K',2,6),(6,'12345678','$2a$10$Qy6dKCgdUVy8MfdhBX5b6uM.7h0kQWrOyvx3Gw3tbRqUdkfeVMYki',2,7),(7,'123456789','$2a$10$nhBtZHszRvPV2KysO3WmwONxqKomUm5254bT9Y3NomACFV0Xv4nDe',2,8);
+INSERT INTO `kortti` VALUES (3,'2222','$2a$10$3cI0/uVEKQaK/ezIh/hM4uqbrDsZ/gS4msPOIWmqoFkHQY9VNdfua',1,2),(6,'4444','$2a$10$Xi86DWrHw/msX6G83e.aiOSAuKczL63GmDq/.ilRdsRQqcSr5ZVte',2,7),(8,'6666','$2a$10$tw84YfA5XPV6kX72SKkTxuRl5vJEPF9tDMJAcIWH5e/KMj4XzgNsC',2,3);
 /*!40000 ALTER TABLE `kortti` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,7 +126,7 @@ CREATE TABLE `tili` (
 
 LOCK TABLES `tili` WRITE;
 /*!40000 ALTER TABLE `tili` DISABLE KEYS */;
-INSERT INTO `tili` VALUES (2,1,'1000',97,'Credit',111),(3,1,'1000',123,'Debit',111),(4,1,'1000',122,'credit',111),(5,2,'11111',122,'Both',111),(6,2,'22222',92,'both',111),(7,2,'22222',0,'Debit',111),(8,2,'22222',7,'debit',111);
+INSERT INTO `tili` VALUES (2,1,'1000',5000,'Credit',500),(3,2,'2222',2000,'Credit',5000),(7,2,'22222',2000,'Debit',0);
 /*!40000 ALTER TABLE `tili` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,7 +147,7 @@ CREATE TABLE `tilitapahtumat` (
   PRIMARY KEY (`idTilitapahtumat`),
   KEY `fk_Tilitapahtumat_Tili1_idx` (`idTili`,`idKortti`),
   CONSTRAINT `fk_Tilitapahtumat_Tili1` FOREIGN KEY (`idTili`) REFERENCES `tili` (`idTili`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,7 +156,7 @@ CREATE TABLE `tilitapahtumat` (
 
 LOCK TABLES `tilitapahtumat` WRITE;
 /*!40000 ALTER TABLE `tilitapahtumat` DISABLE KEYS */;
-INSERT INTO `tilitapahtumat` VALUES (4,'2021-12-02 19:37:52','Nosto',1,2,3),(5,'2021-12-02 19:40:55','Nosto',10,2,3),(6,'2021-12-02 19:41:31','Nosto',112,2,3),(7,'2021-12-02 19:44:08','Nosto',100,2,3),(8,'2021-12-02 19:44:21','Nosto',11,2,3),(9,'2021-12-02 19:50:13','Nosto',100,2,3),(10,'2021-12-02 19:50:33','Nosto',111,2,3),(11,'2021-12-02 20:00:51','Nosto',1,2,3),(12,'2021-12-02 20:09:05','Nosto',1,2,3),(13,'2021-12-02 20:09:49','Nosto',1,4,3),(14,'2021-12-03 16:02:01','Nosto',1,2,3),(15,'2021-12-03 16:05:05','Nosto',1,5,4),(16,'2021-12-03 16:06:25','Nosto',1,6,5),(17,'2021-12-03 16:11:30','Nosto',15,6,5),(18,'2021-12-03 16:14:50','Nosto',10,7,6),(19,'2021-12-03 16:16:04','Nosto',113,7,6),(20,'2021-12-03 16:16:26','Nosto',113,8,7),(21,'2021-12-03 16:18:10','credit_Nosto',15,6,5),(22,'2021-12-03 16:18:23','debit_Nosto',1,8,7),(23,'2021-12-07 21:04:59','debit_Nosto',2,8,7);
+INSERT INTO `tilitapahtumat` VALUES (38,'2021-12-08 12:22:10','credit_Nosto',10,2,3),(39,'2021-12-08 12:24:43','credit_Nosto',10,2,3),(40,'2021-12-08 12:27:31','credit_Nosto',10,2,3),(41,'2021-12-08 12:28:50','credit_Nosto',10,2,3),(42,'2021-12-08 12:31:02','credit_Nosto',10,2,3),(43,'2021-12-08 12:43:44','credit_Nosto',10,2,3),(44,'2021-12-08 12:44:00','credit_Nosto',20,2,3),(45,'2021-12-08 12:44:19','credit_Nosto',40,2,3),(46,'2021-12-08 12:44:31','credit_Nosto',60,2,3),(47,'2021-12-08 12:44:33','credit_Nosto',100,2,3),(48,'2021-12-08 12:44:36','credit_Nosto',200,2,3),(49,'2021-12-08 12:44:37','credit_Nosto',500,2,3),(50,'2021-12-08 12:44:56','credit_Nosto',65,2,3),(51,'2021-12-08 12:49:29','credit_Nosto',10,2,3),(52,'2021-12-08 12:49:43','credit_Nosto',20,2,3),(53,'2021-12-08 12:49:43','credit_Nosto',40,2,3),(54,'2021-12-08 12:49:44','credit_Nosto',60,2,3),(55,'2021-12-08 12:49:45','credit_Nosto',100,2,3),(56,'2021-12-08 12:49:45','credit_Nosto',200,2,3),(57,'2021-12-08 12:49:46','credit_Nosto',500,2,3),(58,'2021-12-08 12:49:49','credit_Nosto',55,2,3),(59,'2021-12-08 12:51:09','credit_Nosto',10,2,3),(60,'2021-12-08 12:51:11','credit_Nosto',20,2,3),(61,'2021-12-08 12:51:12','credit_Nosto',10,2,3),(62,'2021-12-08 12:52:31','credit_Nosto',10,2,3),(63,'2021-12-08 12:52:33','credit_Nosto',20,2,3),(64,'2021-12-08 12:52:35','credit_Nosto',40,2,3);
 /*!40000 ALTER TABLE `tilitapahtumat` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -229,4 +229,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-07 21:11:36
+-- Dump completed on 2021-12-08 13:27:42
