@@ -27,14 +27,17 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     valikko.cpp \
-    pankki.cpp
+    pankki.cpp \
+    saldo.cpp
 
 HEADERS += \
         mainwindow.h \
     valikko.h \
-    pankki.h
+    pankki.h \
+    saldo.h
 
 FORMS += \
         mainwindow.ui \
     valikko.ui \
-    pankki.ui
+    pankki.ui \
+    saldo.ui
