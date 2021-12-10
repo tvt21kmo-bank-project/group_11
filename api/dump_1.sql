@@ -126,7 +126,7 @@ CREATE TABLE `tili` (
 
 LOCK TABLES `tili` WRITE;
 /*!40000 ALTER TABLE `tili` DISABLE KEYS */;
-INSERT INTO `tili` VALUES (2,1,'1000',5000,'Credit',500),(3,2,'2222',2000,'Credit',5000),(7,2,'22222',2000,'Debit',0);
+INSERT INTO `tili` VALUES (2,1,'1000',2000,'Credit',-500),(3,2,'2222',2000,'Credit',-5000),(7,2,'22222',2000,'Debit',0);
 /*!40000 ALTER TABLE `tili` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,7 +147,7 @@ CREATE TABLE `tilitapahtumat` (
   PRIMARY KEY (`idTilitapahtumat`),
   KEY `fk_Tilitapahtumat_Tili1_idx` (`idTili`,`idKortti`),
   CONSTRAINT `fk_Tilitapahtumat_Tili1` FOREIGN KEY (`idTili`) REFERENCES `tili` (`idTili`)
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,7 +156,7 @@ CREATE TABLE `tilitapahtumat` (
 
 LOCK TABLES `tilitapahtumat` WRITE;
 /*!40000 ALTER TABLE `tilitapahtumat` DISABLE KEYS */;
-INSERT INTO `tilitapahtumat` VALUES (38,'2021-12-08 12:22:10','credit_Nosto',10,2,3),(39,'2021-12-08 12:24:43','credit_Nosto',10,2,3),(40,'2021-12-08 12:27:31','credit_Nosto',10,2,3),(41,'2021-12-08 12:28:50','credit_Nosto',10,2,3),(42,'2021-12-08 12:31:02','credit_Nosto',10,2,3),(43,'2021-12-08 12:43:44','credit_Nosto',10,2,3),(44,'2021-12-08 12:44:00','credit_Nosto',20,2,3),(45,'2021-12-08 12:44:19','credit_Nosto',40,2,3),(46,'2021-12-08 12:44:31','credit_Nosto',60,2,3),(47,'2021-12-08 12:44:33','credit_Nosto',100,2,3),(48,'2021-12-08 12:44:36','credit_Nosto',200,2,3),(49,'2021-12-08 12:44:37','credit_Nosto',500,2,3),(50,'2021-12-08 12:44:56','credit_Nosto',65,2,3),(51,'2021-12-08 12:49:29','credit_Nosto',10,2,3),(52,'2021-12-08 12:49:43','credit_Nosto',20,2,3),(53,'2021-12-08 12:49:43','credit_Nosto',40,2,3),(54,'2021-12-08 12:49:44','credit_Nosto',60,2,3),(55,'2021-12-08 12:49:45','credit_Nosto',100,2,3),(56,'2021-12-08 12:49:45','credit_Nosto',200,2,3),(57,'2021-12-08 12:49:46','credit_Nosto',500,2,3),(58,'2021-12-08 12:49:49','credit_Nosto',55,2,3),(59,'2021-12-08 12:51:09','credit_Nosto',10,2,3),(60,'2021-12-08 12:51:11','credit_Nosto',20,2,3),(61,'2021-12-08 12:51:12','credit_Nosto',10,2,3),(62,'2021-12-08 12:52:31','credit_Nosto',10,2,3),(63,'2021-12-08 12:52:33','credit_Nosto',20,2,3),(64,'2021-12-08 12:52:35','credit_Nosto',40,2,3);
+INSERT INTO `tilitapahtumat` VALUES (38,'2021-12-08 12:22:10','credit_Nosto',10,2,3),(39,'2021-12-08 12:24:43','credit_Nosto',10,2,3),(40,'2021-12-08 12:27:31','credit_Nosto',10,2,3),(41,'2021-12-08 12:28:50','credit_Nosto',10,2,3),(42,'2021-12-08 12:31:02','credit_Nosto',10,2,3),(43,'2021-12-08 12:43:44','credit_Nosto',10,2,3),(44,'2021-12-08 12:44:00','credit_Nosto',20,2,3),(45,'2021-12-08 12:44:19','credit_Nosto',40,2,3),(46,'2021-12-08 12:44:31','credit_Nosto',60,2,3),(47,'2021-12-08 12:44:33','credit_Nosto',100,2,3),(48,'2021-12-08 12:44:36','credit_Nosto',200,2,3),(49,'2021-12-08 12:44:37','credit_Nosto',500,2,3),(50,'2021-12-08 12:44:56','credit_Nosto',65,2,3),(51,'2021-12-08 12:49:29','credit_Nosto',10,2,3),(52,'2021-12-08 12:49:43','credit_Nosto',20,2,3),(53,'2021-12-08 12:49:43','credit_Nosto',40,2,3),(54,'2021-12-08 12:49:44','credit_Nosto',60,2,3),(55,'2021-12-08 12:49:45','credit_Nosto',100,2,3),(56,'2021-12-08 12:49:45','credit_Nosto',200,2,3),(57,'2021-12-08 12:49:46','credit_Nosto',500,2,3),(58,'2021-12-08 12:49:49','credit_Nosto',55,2,3),(59,'2021-12-08 12:51:09','credit_Nosto',10,2,3),(60,'2021-12-08 12:51:11','credit_Nosto',20,2,3),(61,'2021-12-08 12:51:12','credit_Nosto',10,2,3),(62,'2021-12-08 12:52:31','credit_Nosto',10,2,3),(63,'2021-12-08 12:52:33','credit_Nosto',20,2,3),(64,'2021-12-08 12:52:35','credit_Nosto',40,2,3),(65,'2021-12-08 18:52:01','credit_Nosto',10,2,3),(66,'2021-12-08 19:05:42','credit_Nosto',1,2,3),(67,'2021-12-08 19:07:24','credit_Nosto',10,2,3),(68,'2021-12-08 19:08:12','credit_Nosto',10,2,3),(69,'2021-12-08 19:09:53','credit_Nosto',10,2,3),(70,'2021-12-08 19:11:56','credit_Nosto',10,2,3),(71,'2021-12-08 19:14:18','credit_Nosto',10,2,3),(72,'2021-12-08 19:14:56','credit_Nosto',10,2,3),(73,'2021-12-08 19:15:13','credit_Nosto',10,2,3),(74,'2021-12-08 19:15:31','credit_Nosto',10,2,3),(75,'2021-12-08 19:17:07','credit_Nosto',20,2,3),(76,'2021-12-08 19:18:40','credit_Nosto',10,2,3),(77,'2021-12-08 19:19:24','credit_Nosto',10,2,3),(78,'2021-12-08 19:52:39','credit_Nosto',10,2,3),(79,'2021-12-08 19:52:42','credit_Nosto',20,2,3),(80,'2021-12-08 19:52:45','credit_Nosto',40,2,3),(81,'2021-12-09 17:48:13','credit_Nosto',10,3,8),(82,'2021-12-09 23:01:25','credit_Nosto',10,2,3),(83,'2021-12-09 23:01:34','credit_Nosto',10000,2,3),(84,'2021-12-10 12:45:51','credit_Nosto',10,3,8),(85,'2021-12-10 12:45:53','credit_Nosto',500,3,8),(86,'2021-12-10 13:17:02','credit_Nosto',15,2,3),(87,'2021-12-10 13:17:14','debit_Nosto',1,3,3),(88,'2021-12-10 13:18:18','debit_Nosto',1,7,6),(89,'2021-12-10 13:18:55','credit_Nosto',15,2,3),(90,'2021-12-10 13:19:09','credit_Nosto',5000,2,3),(91,'2021-12-10 13:22:16','credit_Nosto',400,2,3),(92,'2021-12-10 13:22:25','credit_Nosto',400,2,3),(93,'2021-12-10 13:23:59','debit_Nosto',1000,7,6),(94,'2021-12-10 13:24:09','debit_Nosto',999,7,6),(95,'2021-12-10 13:25:11','debit_Nosto',4000,3,8),(96,'2021-12-10 13:25:40','debit_Nosto',999,3,8),(97,'2021-12-10 13:35:37','credit_Nosto',500,2,3),(98,'2021-12-10 13:35:51','credit_Nosto',5000,2,3),(99,'2021-12-10 13:45:34','credit_Nosto',100,2,3),(100,'2021-12-10 13:45:46','credit_Nosto',2000,2,3),(101,'2021-12-10 13:45:57','credit_Nosto',500,2,3),(102,'2021-12-10 13:46:06','credit_Nosto',500,2,3),(103,'2021-12-10 13:47:42','credit_Nosto',500,2,3),(104,'2021-12-10 13:47:46','credit_Nosto',500,2,3),(105,'2021-12-10 13:47:47','credit_Nosto',500,2,3),(106,'2021-12-10 13:47:48','credit_Nosto',500,2,3),(107,'2021-12-10 13:47:49','credit_Nosto',500,2,3),(108,'2021-12-10 13:47:50','credit_Nosto',500,2,3),(109,'2021-12-10 13:50:10','credit_Nosto',500,2,3),(110,'2021-12-10 13:50:12','credit_Nosto',500,2,3),(111,'2021-12-10 13:50:12','credit_Nosto',500,2,3),(112,'2021-12-10 13:50:12','credit_Nosto',500,2,3),(113,'2021-12-10 13:50:13','credit_Nosto',500,2,3),(114,'2021-12-10 13:51:10','credit_Nosto',2500,2,3),(115,'2021-12-10 13:52:34','credit_Nosto',2500,3,8),(116,'2021-12-10 13:52:44','credit_Nosto',2500,3,8),(117,'2021-12-10 13:53:13','credit_Nosto',2000,3,8);
 /*!40000 ALTER TABLE `tilitapahtumat` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -177,7 +177,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `credit_nosto`(IN first_id INT, IN s
 BEGIN
   DECLARE test1 INT DEFAULT 0;
   START TRANSACTION;
-  UPDATE Tili SET Saldo=Saldo-Summa WHERE idTili=first_id AND Saldo>=(-Luottoraja+1) AND (Tilin_tyyppi = 'Credit' OR Tilin_tyyppi = 'credit' OR Tilin_tyyppi = 'Both' OR Tilin_tyyppi = 'both');
+  UPDATE Tili SET Saldo=Saldo-Summa WHERE idTili=first_id AND Saldo-Summa>=Luottoraja AND (Tilin_tyyppi = 'Credit' OR Tilin_tyyppi = 'credit');
   SET test1=ROW_COUNT();
     IF (test1 > 0) THEN   
       COMMIT;    
@@ -205,7 +205,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `debit_nosto`(IN first_id INT, IN se
 BEGIN
   DECLARE test1 INT DEFAULT 0;
   START TRANSACTION;
-  UPDATE Tili SET Saldo=Saldo-Summa WHERE idTili=first_id AND Saldo>=Summa AND (Tilin_tyyppi = 'Debit' OR Tilin_tyyppi = 'debit' OR Tilin_tyyppi = 'Both' OR Tilin_tyyppi = 'both');
+  UPDATE Tili SET Saldo=Saldo-Summa WHERE idTili=first_id AND Saldo>=Summa AND (Tilin_tyyppi = 'Debit' OR Tilin_tyyppi = 'debit' OR Tilin_tyyppi = 'Credit' OR Tilin_tyyppi = 'credit');
   SET test1=ROW_COUNT();
     IF (test1 > 0) THEN   
       COMMIT;    
@@ -229,4 +229,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-08 13:27:42
+-- Dump completed on 2021-12-10 14:00:44
