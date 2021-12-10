@@ -75,12 +75,14 @@ void valikko::on_btnSelaaTilitapahtumia_clicked()
 {
     timerCounter=0;
     objQTimer->stop();
+    objTilitapahtumat= new Tp(this->idKortti);
+    objTilitapahtumat->show();
 }
 
 void valikko::on_btnKirjauduUlos_clicked()
 {
     timerCounter=0;
-    objQTimer->stop();
+    this->close();
 }
 
 void valikko::on_btnValitseTili_clicked()

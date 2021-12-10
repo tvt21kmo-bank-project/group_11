@@ -26,18 +26,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
+    tp.cpp \
     valikko.cpp \
     pankki.cpp \
     saldo.cpp
 
 HEADERS += \
         mainwindow.h \
+    tp.h \
     valikko.h \
     pankki.h \
     saldo.h
 
 FORMS += \
         mainwindow.ui \
+    tp.ui \
     valikko.ui \
     pankki.ui \
     saldo.ui
