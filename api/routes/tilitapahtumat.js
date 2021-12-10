@@ -5,10 +5,13 @@ const tilitapahtumat = require('../models/tilitapahtumat_model');
 router.get('/:id?',
  function(request, response) {
   if (request.params.id) {
+	  console.log("id:"+request.params.id);
     tilitapahtumat.getById(request.params.id, function(err, dbResult) {
       if (err) {
+		  console.log("virhe");
         response.json(err);
       } else {
+		  console.log(dbResult);
         response.json(dbResult);
       }
     });
@@ -17,7 +20,7 @@ router.get('/:id?',
       if (err) {
         response.json(err);
       } else {
-        //console.log(dbResult);
+        console.log(dbResult);
         response.json(dbResult);
       }
     });

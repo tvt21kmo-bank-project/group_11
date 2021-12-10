@@ -1,0 +1,11 @@
+debug/main.o
+debug/mainwindow.o
+debug/tp.o
+debug/valikko.o
+debug/pankki.o
+debug/saldo.o
+debug/moc_mainwindow.o
+debug/moc_tp.o
+debug/moc_valikko.o
+debug/moc_pankki.o
+debug/moc_saldo.o

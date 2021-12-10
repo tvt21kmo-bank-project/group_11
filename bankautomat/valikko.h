@@ -7,6 +7,8 @@
 #include <QJsonDocument>
 #include "pankki.h"
 #include "saldo.h"
+#include "tp.h"
+
 
 namespace Ui {
 class valikko;
@@ -38,6 +40,7 @@ private:
     Ui::valikko *ui;
     Pankki *objPankki;
     Saldo *objSaldo;
+    Tp *objTilitapahtumat;
     QString idTili;
     QString idKortti;
     QTimer *objQTimer;
