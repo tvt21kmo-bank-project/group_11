@@ -43,7 +43,7 @@ void MainWindow::loginSlot(QNetworkReply *reply)
     QByteArray response_data=reply->readAll();
     QJsonDocument j_doc = QJsonDocument::fromJson(response_data);
     QJsonObject j_obj = j_doc.object();
-    QString idTili = QString::number(j_obj["idTili"].toInt());
+    QString idTili = QString::number(j_obj["idTili"].toInt()); // tuodaan loginin mukana tilin ja kortin ID:t
     QString idKortti = QString::number(j_obj["idKortti"].toInt());
     qDebug()<<idTili;
     objValikko=new valikko(idTili, idKortti);

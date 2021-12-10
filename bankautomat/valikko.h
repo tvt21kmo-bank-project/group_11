@@ -6,6 +6,7 @@
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 #include "pankki.h"
+#include "saldo.h"
 
 namespace Ui {
 class valikko;
@@ -36,6 +37,7 @@ private slots:
 private:
     Ui::valikko *ui;
     Pankki *objPankki;
+    Saldo *objSaldo;
     QString idTili;
     QString idKortti;
     QTimer *objQTimer;

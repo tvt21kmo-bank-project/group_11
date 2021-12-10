@@ -20,6 +20,7 @@ var tilitapahtumatRouter = require('./routes/tilitapahtumat');
 var korttiRouter = require('./routes/kortti');
 var loginRouter = require('./routes/login');
 var bankRouter = require('./routes/bank');
+var saldoRouter = require('./routes/saldo');
 
 
 
@@ -37,5 +38,6 @@ app.use('/tilitapahtumat', tilitapahtumatRouter);
 app.use('/kortti', korttiRouter);
 app.use('/login', loginRouter);
 app.use('/bank', bankRouter);
+app.use('/saldo', saldoRouter);
 
 module.exports = app;

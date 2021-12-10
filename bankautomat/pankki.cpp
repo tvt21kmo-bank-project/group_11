@@ -31,7 +31,7 @@ void Pankki::TimerSlot()
     qDebug() << "Nosta rahaa Timer.."<<timerCounter;
     timerCounter++;
 
-    if(timerCounter==10)
+    if(timerCounter==10) // sulkee formin jos paina nappeja 10 sekunttiin
         {
             objQTimer->stop();
 
@@ -46,7 +46,7 @@ void Pankki::TimerSlot()
 
 void Pankki::on_btnPankkiClose_clicked()
 {
-    timerCounter=0;
+    objQTimer->stop();
     this->close();
 }
 

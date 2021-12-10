@@ -27,6 +27,8 @@ valikko::~valikko()
     ui = nullptr;
     delete objPankki;
     objPankki=nullptr;
+    delete objSaldo;
+    objSaldo = nullptr;
 }
 
 void valikko::TimerSlot()
@@ -34,7 +36,7 @@ void valikko::TimerSlot()
     qDebug() << "Valikon Timer.."<<timerCounter;
     timerCounter++;
 
-    if(timerCounter==30)
+    if(timerCounter==30) // sulkee formin jos paina nappeja 30 sekunttiin
         {
             objQTimer->stop();
 
@@ -65,6 +67,8 @@ void valikko::on_btnNaytaSaldo_clicked()
 {
     timerCounter=0;
     objQTimer->stop();
+    objSaldo=new Saldo(this->idKortti);
+    objSaldo->show();
 }
 
 void valikko::on_btnSelaaTilitapahtumia_clicked()
