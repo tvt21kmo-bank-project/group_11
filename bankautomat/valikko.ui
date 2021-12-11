@@ -62,23 +62,10 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="btnValitseTili">
-   <property name="geometry">
-    <rect>
-     <x>690</x>
-     <y>240</y>
-     <width>181</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Valitse tili</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="btnNostaRahaa">
    <property name="geometry">
     <rect>
-     <x>910</x>
+     <x>690</x>
      <y>240</y>
      <width>181</width>
      <height>71</height>
@@ -91,8 +78,8 @@
   <widget class="QPushButton" name="btnNaytaSaldo">
    <property name="geometry">
     <rect>
-     <x>690</x>
-     <y>340</y>
+     <x>900</x>
+     <y>240</y>
      <width>181</width>
      <height>71</height>
     </rect>
@@ -104,8 +91,8 @@
   <widget class="QPushButton" name="btnSelaaTilitapahtumia">
    <property name="geometry">
     <rect>
-     <x>910</x>
-     <y>340</y>
+     <x>690</x>
+     <y>330</y>
      <width>181</width>
      <height>71</height>
     </rect>
@@ -117,8 +104,8 @@
   <widget class="QPushButton" name="btnKirjauduUlos">
    <property name="geometry">
     <rect>
-     <x>790</x>
-     <y>450</y>
+     <x>900</x>
+     <y>330</y>
      <width>181</width>
      <height>71</height>
     </rect>

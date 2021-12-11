@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>debitPankki</class>
+ <widget class="QDialog" name="debitPankki">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>850</width>
+    <height>568</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QPushButton" name="btnDebitPankkiClose">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>450</y>
+     <width>121</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Sulje</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnDebitNosto10">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>40</y>
+     <width>141</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>10</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnDebitNosto20">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>40</y>
+     <width>141</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>20</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnDebitNosto40">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>140</y>
+     <width>141</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>40</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnDebitNosto60">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>140</y>
+     <width>141</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>60</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnDebitNosto100">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>230</y>
+     <width>141</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>100</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnDebitNosto200">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>230</y>
+     <width>141</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>200</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnDebitNosto500">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>320</y>
+     <width>141</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>500</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnDebitPankkiSuorita">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>320</y>
+     <width>141</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Suorita</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="leDebitSumma">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>350</y>
+     <width>131</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>320</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Muu Summa</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelDebitPankkiInfo">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>420</y>
+     <width>391</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

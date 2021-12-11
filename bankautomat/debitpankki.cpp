@@ -1,16 +1,17 @@
-#include "pankki.h"
-#include "ui_pankki.h"
+#include "debitpankki.h"
+#include "ui_debitpankki.h"
 
-Pankki::Pankki(QString idTili, QString idKortti, QWidget *parent) :
+debitPankki::debitPankki(QString idTili, QString idKortti, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::Pankki)
+    ui(new Ui::debitPankki)
 {
     timerCounter=0;
+    ui->setupUi(this);
     this->idTili=idTili;
     this->idKortti=idKortti;
-    ui->setupUi(this);
     qDebug()<<"pankki idTili "+this->idTili;
     qDebug()<<"pankki idKortti "+this->idKortti;
+
     objQTimer = new QTimer();
 
     // setup signal and slot
@@ -18,17 +19,37 @@ Pankki::Pankki(QString idTili, QString idKortti, QWidget *parent) :
             this, SLOT(TimerSlot()));
 
     objQTimer->start(1000);
-
 }
 
-Pankki::~Pankki()
+debitPankki::~debitPankki()
 {
+    objQTimer->stop();
     delete ui;
 }
 
-void Pankki::TimerSlot()
+void debitPankki::on_btnDebitPankkiClose_clicked()
 {
-    qDebug() << "Nosta rahaa Timer.."<<timerCounter;
+    objQTimer->stop();
+    this->close();
+}
+
+void debitPankki::debitSlot(QNetworkReply *reply)
+{
+    QByteArray response_data=reply->readAll();
+    qDebug()<<response_data;
+    if(response_data == "1"){
+        ui->labelDebitPankkiInfo->setText("Nosto Onnistu");
+        ui->leDebitSumma->setText("");
+    }
+    else {
+        ui->labelDebitPankkiInfo->setText("Nosto Epäonnistu, Ei tarpeeksi rahaa");
+        ui->leDebitSumma->setText("");
+    }
+}
+
+void debitPankki::TimerSlot()
+{
+    qDebug() << "Debitin Nosta rahaa Timer.."<<timerCounter;
     timerCounter++;
 
     if(timerCounter==10) // sulkee formin jos paina nappeja 10 sekunttiin
@@ -44,191 +65,170 @@ void Pankki::TimerSlot()
 }
 
 
-void Pankki::on_btnPankkiClose_clicked()
-{
-    objQTimer->stop();
-    this->close();
-}
-
-void Pankki::on_btnPankkiSuorita_clicked()
+void debitPankki::on_btnDebitPankkiSuorita_clicked()
 {
     timerCounter=0;
     QJsonObject json; //luodaan JSON objekti ja lisätään data
     json.insert("idTili",this->idTili);
     json.insert("idKortti",this->idKortti);
-    json.insert("Summa",ui->le_Summa->text());
-    QString site_url="http://localhost:3000/bank/credit_nosto";
+    json.insert("Summa",ui->leDebitSumma->text());
+    QString site_url="http://localhost:3000/bank/debit_nosto";
     // credentials="admin:1234";
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     //QByteArray data = credentials.toLocal8Bit().toBase64();
     //QString headerData = "Basic " + data;
     //request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
-    creditManager = new QNetworkAccessManager(this);
-    connect(creditManager, SIGNAL(finished (QNetworkReply*)),
-    this, SLOT(creditSlot(QNetworkReply*)));
-    reply = creditManager->post(request, QJsonDocument(json).toJson());
-    ui->labelPankkiInfo->setText("");
+    debitManager = new QNetworkAccessManager(this);
+    connect(debitManager, SIGNAL(finished (QNetworkReply*)),
+    this, SLOT(debitSlot(QNetworkReply*)));
+    reply = debitManager->post(request, QJsonDocument(json).toJson());
+    ui->labelDebitPankkiInfo->setText("");
 }
 
-void Pankki::creditSlot(QNetworkReply *reply)
-{
-    QByteArray response_data=reply->readAll();
-    qDebug()<<response_data;
-    if(response_data == "1"){
-        ui->labelPankkiInfo->setText("Nosto Onnistu");
-        ui->le_Summa->setText("");
-    }
-    else {
-        ui->labelPankkiInfo->setText("Nosto Epäonnistu, Ei tarpeeksi rahaa");
-        ui->le_Summa->setText("");
-    }
-}
-
-
-void Pankki::on_btnNosto_10_clicked()
+void debitPankki::on_btnDebitNosto10_clicked()
 {
     timerCounter=0;
     QJsonObject json; //luodaan JSON objekti ja lisätään data
     json.insert("idTili",this->idTili);
     json.insert("idKortti",this->idKortti);
     json.insert("Summa","10");                                      //Tässä syötetään nappia vastaava rahasumma
-    QString site_url="http://localhost:3000/bank/credit_nosto";
+    QString site_url="http://localhost:3000/bank/debit_nosto";
     // credentials="admin:1234";
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     //QByteArray data = credentials.toLocal8Bit().toBase64();
     //QString headerData = "Basic " + data;
     //request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
-    creditManager = new QNetworkAccessManager(this);
-    connect(creditManager, SIGNAL(finished (QNetworkReply*)),
-    this, SLOT(creditSlot(QNetworkReply*)));
-    reply = creditManager->post(request, QJsonDocument(json).toJson());     // jos ongelmia, lisää managereja jokaiselle
-    ui->labelPankkiInfo->setText("");
+    debitManager = new QNetworkAccessManager(this);
+    connect(debitManager, SIGNAL(finished (QNetworkReply*)),
+    this, SLOT(debitSlot(QNetworkReply*)));
+    reply = debitManager->post(request, QJsonDocument(json).toJson());     // jos ongelmia, lisää managereja jokaiselle
+    ui->labelDebitPankkiInfo->setText("");
 }
 
-void Pankki::on_btnNosto_20_clicked()
+void debitPankki::on_btnDebitNosto20_clicked()
 {
     timerCounter=0;
     QJsonObject json; //luodaan JSON objekti ja lisätään data
     json.insert("idTili",this->idTili);
     json.insert("idKortti",this->idKortti);
-    json.insert("Summa","20");
-    QString site_url="http://localhost:3000/bank/credit_nosto";
+    json.insert("Summa","20");                                      //Tässä syötetään nappia vastaava rahasumma
+    QString site_url="http://localhost:3000/bank/debit_nosto";
     // credentials="admin:1234";
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     //QByteArray data = credentials.toLocal8Bit().toBase64();
     //QString headerData = "Basic " + data;
     //request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
-    creditManager = new QNetworkAccessManager(this);
-    connect(creditManager, SIGNAL(finished (QNetworkReply*)),
-    this, SLOT(creditSlot(QNetworkReply*)));
-    reply = creditManager->post(request, QJsonDocument(json).toJson());
-    ui->labelPankkiInfo->setText("");
+    debitManager = new QNetworkAccessManager(this);
+    connect(debitManager, SIGNAL(finished (QNetworkReply*)),
+    this, SLOT(debitSlot(QNetworkReply*)));
+    reply = debitManager->post(request, QJsonDocument(json).toJson());
+    ui->labelDebitPankkiInfo->setText("");
 }
 
-void Pankki::on_btnNosto_40_clicked()
+void debitPankki::on_btnDebitNosto40_clicked()
 {
     timerCounter=0;
     QJsonObject json; //luodaan JSON objekti ja lisätään data
     json.insert("idTili",this->idTili);
     json.insert("idKortti",this->idKortti);
-    json.insert("Summa","40");
-    QString site_url="http://localhost:3000/bank/credit_nosto";
+    json.insert("Summa","40");                                      //Tässä syötetään nappia vastaava rahasumma
+    QString site_url="http://localhost:3000/bank/debit_nosto";
     // credentials="admin:1234";
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     //QByteArray data = credentials.toLocal8Bit().toBase64();
     //QString headerData = "Basic " + data;
     //request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
-    creditManager = new QNetworkAccessManager(this);
-    connect(creditManager, SIGNAL(finished (QNetworkReply*)),
-    this, SLOT(creditSlot(QNetworkReply*)));
-    reply = creditManager->post(request, QJsonDocument(json).toJson());
-    ui->labelPankkiInfo->setText("");
+    debitManager = new QNetworkAccessManager(this);
+    connect(debitManager, SIGNAL(finished (QNetworkReply*)),
+    this, SLOT(debitSlot(QNetworkReply*)));
+    reply = debitManager->post(request, QJsonDocument(json).toJson());
+    ui->labelDebitPankkiInfo->setText("");
 }
 
-void Pankki::on_btnNosto_60_clicked()
+void debitPankki::on_btnDebitNosto60_clicked()
 {
     timerCounter=0;
     QJsonObject json; //luodaan JSON objekti ja lisätään data
     json.insert("idTili",this->idTili);
     json.insert("idKortti",this->idKortti);
-    json.insert("Summa","60");
-    QString site_url="http://localhost:3000/bank/credit_nosto";
+    json.insert("Summa","60");                                      //Tässä syötetään nappia vastaava rahasumma
+    QString site_url="http://localhost:3000/bank/debit_nosto";
     // credentials="admin:1234";
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     //QByteArray data = credentials.toLocal8Bit().toBase64();
     //QString headerData = "Basic " + data;
     //request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
-    creditManager = new QNetworkAccessManager(this);
-    connect(creditManager, SIGNAL(finished (QNetworkReply*)),
-    this, SLOT(creditSlot(QNetworkReply*)));
-    reply = creditManager->post(request, QJsonDocument(json).toJson());
-    ui->labelPankkiInfo->setText("");
+    debitManager = new QNetworkAccessManager(this);
+    connect(debitManager, SIGNAL(finished (QNetworkReply*)),
+    this, SLOT(debitSlot(QNetworkReply*)));
+    reply = debitManager->post(request, QJsonDocument(json).toJson());
+    ui->labelDebitPankkiInfo->setText("");
 }
 
-void Pankki::on_btnNosto_100_clicked()
+void debitPankki::on_btnDebitNosto100_clicked()
 {
     timerCounter=0;
     QJsonObject json; //luodaan JSON objekti ja lisätään data
     json.insert("idTili",this->idTili);
     json.insert("idKortti",this->idKortti);
-    json.insert("Summa","100");
-    QString site_url="http://localhost:3000/bank/credit_nosto";
+    json.insert("Summa","100");                                      //Tässä syötetään nappia vastaava rahasumma
+    QString site_url="http://localhost:3000/bank/debit_nosto";
     // credentials="admin:1234";
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     //QByteArray data = credentials.toLocal8Bit().toBase64();
     //QString headerData = "Basic " + data;
     //request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
-    creditManager = new QNetworkAccessManager(this);
-    connect(creditManager, SIGNAL(finished (QNetworkReply*)),
-    this, SLOT(creditSlot(QNetworkReply*)));
-    reply = creditManager->post(request, QJsonDocument(json).toJson());
-    ui->labelPankkiInfo->setText("");
+    debitManager = new QNetworkAccessManager(this);
+    connect(debitManager, SIGNAL(finished (QNetworkReply*)),
+    this, SLOT(debitSlot(QNetworkReply*)));
+    reply = debitManager->post(request, QJsonDocument(json).toJson());
+    ui->labelDebitPankkiInfo->setText("");
 }
 
-void Pankki::on_btnNosto_200_clicked()
+void debitPankki::on_btnDebitNosto200_clicked()
 {
     timerCounter=0;
     QJsonObject json; //luodaan JSON objekti ja lisätään data
     json.insert("idTili",this->idTili);
     json.insert("idKortti",this->idKortti);
-    json.insert("Summa","200");
-    QString site_url="http://localhost:3000/bank/credit_nosto";
+    json.insert("Summa","200");                                      //Tässä syötetään nappia vastaava rahasumma
+    QString site_url="http://localhost:3000/bank/debit_nosto";
     // credentials="admin:1234";
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     //QByteArray data = credentials.toLocal8Bit().toBase64();
     //QString headerData = "Basic " + data;
     //request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
-    creditManager = new QNetworkAccessManager(this);
-    connect(creditManager, SIGNAL(finished (QNetworkReply*)),
-    this, SLOT(creditSlot(QNetworkReply*)));
-    reply = creditManager->post(request, QJsonDocument(json).toJson());
-    ui->labelPankkiInfo->setText("");
+    debitManager = new QNetworkAccessManager(this);
+    connect(debitManager, SIGNAL(finished (QNetworkReply*)),
+    this, SLOT(debitSlot(QNetworkReply*)));
+    reply = debitManager->post(request, QJsonDocument(json).toJson());
+    ui->labelDebitPankkiInfo->setText("");
 }
 
-void Pankki::on_btnNosto_500_clicked()
+void debitPankki::on_btnDebitNosto500_clicked()
 {
     timerCounter=0;
     QJsonObject json; //luodaan JSON objekti ja lisätään data
     json.insert("idTili",this->idTili);
     json.insert("idKortti",this->idKortti);
-    json.insert("Summa","500");
-    QString site_url="http://localhost:3000/bank/credit_nosto";
+    json.insert("Summa","500");                                      //Tässä syötetään nappia vastaava rahasumma
+    QString site_url="http://localhost:3000/bank/debit_nosto";
     // credentials="admin:1234";
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     //QByteArray data = credentials.toLocal8Bit().toBase64();
     //QString headerData = "Basic " + data;
     //request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
-    creditManager = new QNetworkAccessManager(this);
-    connect(creditManager, SIGNAL(finished (QNetworkReply*)),
-    this, SLOT(creditSlot(QNetworkReply*)));
-    reply = creditManager->post(request, QJsonDocument(json).toJson());
-    ui->labelPankkiInfo->setText("");
+    debitManager = new QNetworkAccessManager(this);
+    connect(debitManager, SIGNAL(finished (QNetworkReply*)),
+    this, SLOT(debitSlot(QNetworkReply*)));
+    reply = debitManager->post(request, QJsonDocument(json).toJson());
+    ui->labelDebitPankkiInfo->setText("");
 }

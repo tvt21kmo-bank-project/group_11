@@ -25,7 +25,6 @@ private slots:
     void on_btnPankkiSuorita_clicked();
 
     void creditSlot(QNetworkReply *reply);
-    void debitSlot(QNetworkReply *reply);
     void TimerSlot();
 
     void on_btnNosto_10_clicked();
@@ -45,7 +44,6 @@ private slots:
 private:
     Ui::Pankki *ui;
     QNetworkAccessManager *creditManager;
-    QNetworkAccessManager *debitManager;
     QNetworkReply *reply;
     QString idTili;
     QString idKortti;

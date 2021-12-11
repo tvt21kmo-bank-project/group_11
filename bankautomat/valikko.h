@@ -10,6 +10,7 @@
 #include "tp.h"
 
 
+
 namespace Ui {
 class valikko;
 }
@@ -24,8 +25,6 @@ public:
 
 private slots:
     void on_btnValikkoClose_clicked();
-
-    void on_btnValitseTili_clicked();
 
     void on_btnNostaRahaa_clicked();
 

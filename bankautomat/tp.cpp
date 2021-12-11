@@ -5,6 +5,7 @@ Tp::Tp(QString id, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Tp)
 {
+    timerCounter=0;
     ui->setupUi(this);
     idKortti=id;
 
@@ -25,7 +26,7 @@ void Tp::TimerSlot()
     qDebug() << "Näytä Tp Timer.."<<timerCounter;
     timerCounter++;
 
-    if(timerCounter==10) // sulkee formin jos paina nappeja 10 sekunttiin
+    if(timerCounter==10) // sulkee formin jos ei paina nappeja 10 sekunttiin
         {
             objQTimer->stop();
 
@@ -39,7 +40,7 @@ void Tp::TimerSlot()
 
 void Tp::on_btntapahtumat_clicked()
 {
-    objQTimer->stop();
+    timerCounter=0;
     qDebug()<<"tapahtumat";
     QString site_url="http://localhost:3000/tilitapahtumat/"+idKortti;
         qDebug()<<"tilitapahtumat"+idKortti;
@@ -83,7 +84,8 @@ void Tp::tilitapahtumatSlot(QNetworkReply *reply)
 
 void Tp::on_btnSuljetapahtumat_clicked()
 {
-     timerCounter=0;
-     this->close();
+        timerCounter=0;
+        objQTimer->stop();
+        this->close();
 }
 
