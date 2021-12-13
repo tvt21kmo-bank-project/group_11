@@ -5,10 +5,11 @@ valikko::valikko(QString idTili, QString idKortti, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::valikko)
 {
+
+    ui->setupUi(this);
     timerCounter=0;
     this->idTili=idTili;
     this->idKortti=idKortti;
-    ui->setupUi(this);
     qDebug()<<"valikko "+this->idTili;
 
     objQTimer = new QTimer();
@@ -29,14 +30,16 @@ valikko::~valikko()
     objPankki=nullptr;
     delete objSaldo;
     objSaldo = nullptr;
+    delete objTilitapahtumat;
+    objTilitapahtumat = nullptr;
 }
 
 void valikko::TimerSlot()
 {
-    qDebug() << "Valikon Timer.."<<timerCounter;
+    qDebug() << "credit Valikon Timer.."<<timerCounter;
     timerCounter++;
 
-    if(timerCounter==30) // sulkee formin jos paina nappeja 30 sekunttiin
+    if(timerCounter==30) // sulkee formin jos ei paina nappeja 30 sekunttiin
         {
             objQTimer->stop();
 
@@ -51,6 +54,7 @@ void valikko::TimerSlot()
 void valikko::on_btnValikkoClose_clicked()
 {
     timerCounter=0;
+    objQTimer->stop();
     this->close();
 
 }
@@ -85,8 +89,3 @@ void valikko::on_btnKirjauduUlos_clicked()
     this->close();
 }
 
-void valikko::on_btnValitseTili_clicked()
-{
-    timerCounter=0;
-    objQTimer->stop();
-}

@@ -5,7 +5,9 @@
 #include <QtNetwork>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
-#include "valikko.h"
+//#include "valikko.h"
+#include "valinta.h"
+#include "debitvalikko.h"
 
 
 namespace Ui {
@@ -31,7 +33,10 @@ private:
     QNetworkAccessManager *manager;
     QNetworkAccessManager *loginManager;
     QNetworkReply *reply;
-    valikko *objValikko;
+    //valikko *objValikko;
+    Valinta *objValinta;
+    debitValikko *objDebitValikko;
+
 
 };
 

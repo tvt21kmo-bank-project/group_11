@@ -29,18 +29,27 @@ SOURCES += \
     tp.cpp \
     valikko.cpp \
     pankki.cpp \
-    saldo.cpp
+    saldo.cpp \
+    valinta.cpp \
+    debitvalikko.cpp \
+    debitpankki.cpp
 
 HEADERS += \
         mainwindow.h \
     tp.h \
     valikko.h \
     pankki.h \
-    saldo.h
+    saldo.h \
+    valinta.h \
+    debitvalikko.h \
+    debitpankki.h
 
 FORMS += \
         mainwindow.ui \
     tp.ui \
     valikko.ui \
     pankki.ui \
-    saldo.ui
+    saldo.ui \
+    valinta.ui \
+    debitvalikko.ui \
+    debitpankki.ui
