@@ -14,7 +14,7 @@ class Valinta : public QDialog
     Q_OBJECT
 
 public:
-    explicit Valinta(QString idTili, QString idKortti,QWidget *parent = 0);
+    explicit Valinta(QString idTili, QString idKortti, QString Etunimi, QString Sukunimi,QWidget *parent = 0);
     ~Valinta();
 
 private slots:
@@ -31,6 +31,8 @@ private:
     debitValikko *objDebitValikko;
     QString idTili;
     QString idKortti;
+    QString Etunimi;
+    QString Sukunimi;
     QTimer *objQTimer;
     short timerCounter;
 };

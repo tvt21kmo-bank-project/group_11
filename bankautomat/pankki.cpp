@@ -31,7 +31,7 @@ void Pankki::TimerSlot()
     qDebug() << "Nosta rahaa Timer.."<<timerCounter;
     timerCounter++;
 
-    if(timerCounter==10) // sulkee formin jos paina nappeja 10 sekunttiin
+    if(timerCounter==10) // sulkee formin jos ei paina nappeja 10 sekunttiin
         {
             objQTimer->stop();
 
@@ -53,7 +53,7 @@ void Pankki::on_btnPankkiClose_clicked()
 void Pankki::on_btnPankkiSuorita_clicked()
 {
     timerCounter=0;
-    QJsonObject json; //luodaan JSON objekti ja lisätään data
+    QJsonObject json;                       //luodaan JSON objekti ja lisätään data
     json.insert("idTili",this->idTili);
     json.insert("idKortti",this->idKortti);
     json.insert("Summa",ui->le_Summa->text());

@@ -1,7 +1,7 @@
 #include "valikko.h"
 #include "ui_valikko.h"
 
-valikko::valikko(QString idTili, QString idKortti, QWidget *parent) :
+valikko::valikko(QString idTili, QString idKortti, QString Etunimi, QString Sukunimi, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::valikko)
 {
@@ -10,7 +10,13 @@ valikko::valikko(QString idTili, QString idKortti, QWidget *parent) :
     timerCounter=0;
     this->idTili=idTili;
     this->idKortti=idKortti;
-    qDebug()<<"valikko "+this->idTili;
+    this->Etunimi=Etunimi;
+    this->Sukunimi=Sukunimi;
+    //qDebug()<<"valikko "+this->idTili;
+    //qDebug()<<"valikko "<< Etunimi;
+    //qDebug()<<"valikko " <<Sukunimi;
+    ui->labelValikkoAsiakas->setText("Tervetuloa "+Etunimi+" "+Sukunimi);
+
 
     objQTimer = new QTimer();
 

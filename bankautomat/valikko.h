@@ -20,7 +20,7 @@ class valikko : public QDialog
     Q_OBJECT
 
 public:
-    explicit valikko(QString idTili, QString idKortti, QWidget *parent = 0);
+    explicit valikko(QString idTili, QString idKortti, QString Etunimi, QString Sukunimi, QWidget *parent = 0);
     ~valikko();
 
 private slots:
@@ -42,6 +42,8 @@ private:
     Tp *objTilitapahtumat;
     QString idTili;
     QString idKortti;
+    QString Etunimi;
+    QString Sukunimi;
     QTimer *objQTimer;
     short timerCounter;
 };
