@@ -38,11 +38,11 @@ void debitPankki::debitSlot(QNetworkReply *reply)
     QByteArray response_data=reply->readAll();
     qDebug()<<response_data;
     if(response_data == "1"){
-        ui->labelDebitPankkiInfo->setText("Nosto Onnistu");
+        ui->labelDebitPankkiInfo->setText("Nosto onnistui!");
         ui->leDebitSumma->setText("");
     }
     else {
-        ui->labelDebitPankkiInfo->setText("Nosto Epäonnistu, Ei tarpeeksi rahaa");
+        ui->labelDebitPankkiInfo->setText("Nosto epäonnistui, tilillä ei tarpeeksi katetta.");
         ui->leDebitSumma->setText("");
     }
 }

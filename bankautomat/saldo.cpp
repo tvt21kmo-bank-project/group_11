@@ -1,6 +1,7 @@
 #include "saldo.h"
 #include "ui_saldo.h"
 
+
 Saldo::Saldo(QString idKortti, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Saldo)
@@ -25,6 +26,7 @@ Saldo::Saldo(QString idKortti, QWidget *parent) :
 Saldo::~Saldo()
 {
     delete ui;
+
 }
 void Saldo::TimerSlot()
 {
@@ -45,8 +47,10 @@ void Saldo::TimerSlot()
 
 void Saldo::on_btnSaldoClose_clicked()
 {
+
     objQTimer->stop();
     this->close();
+
 }
 
 void Saldo::saldoSlot(QNetworkReply *reply)

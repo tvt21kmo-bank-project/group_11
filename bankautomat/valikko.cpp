@@ -61,7 +61,7 @@ void valikko::on_btnValikkoClose_clicked()
 
 void valikko::on_btnNostaRahaa_clicked()
 {
-    timerCounter=0;
+    //timerCounter=0;
     objQTimer->stop();
     objPankki=new Pankki(this->idTili, this->idKortti);
     objPankki->show();
@@ -69,7 +69,7 @@ void valikko::on_btnNostaRahaa_clicked()
 
 void valikko::on_btnNaytaSaldo_clicked()
 {
-    timerCounter=0;
+    //timerCounter=0;
     objQTimer->stop();
     objSaldo=new Saldo(this->idKortti);
     objSaldo->show();
@@ -77,7 +77,7 @@ void valikko::on_btnNaytaSaldo_clicked()
 
 void valikko::on_btnSelaaTilitapahtumia_clicked()
 {
-    timerCounter=0;
+    //timerCounter=0;
     objQTimer->stop();
     objTilitapahtumat= new Tp(this->idKortti);
     objTilitapahtumat->show();

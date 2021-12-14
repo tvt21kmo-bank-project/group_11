@@ -76,11 +76,11 @@ void Pankki::creditSlot(QNetworkReply *reply)
     QByteArray response_data=reply->readAll();
     qDebug()<<response_data;
     if(response_data == "1"){
-        ui->labelPankkiInfo->setText("Nosto Onnistu");
+        ui->labelPankkiInfo->setText("Nosto Onnistui!");
         ui->le_Summa->setText("");
     }
     else {
-        ui->labelPankkiInfo->setText("Nosto Epäonnistu, Ei tarpeeksi rahaa");
+        ui->labelPankkiInfo->setText("Nosto epäonnistui, tilillä ei tarpeeksi katetta.");
         ui->le_Summa->setText("");
     }
 }
