@@ -23,6 +23,7 @@ private slots:
     void on_btnDebitValinta_clicked();
 
     void on_btnValintaClose_clicked();
+    void TimerSlot();
 
 private:
     Ui::Valinta *ui;
@@ -30,6 +31,8 @@ private:
     debitValikko *objDebitValikko;
     QString idTili;
     QString idKortti;
+    QTimer *objQTimer;
+    short timerCounter;
 };
 
 #endif // VALINTA_H

@@ -6,6 +6,7 @@
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 
+
 namespace Ui {
 class Saldo;
 }
@@ -26,6 +27,7 @@ private slots:
     void TimerSlot();
 
 private:
+
     Ui::Saldo *ui;
     QString idKortti;
     QNetworkAccessManager *saldoManager;

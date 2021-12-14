@@ -78,17 +78,35 @@ void MainWindow::loginSlot(QNetworkReply *reply)
 
 
     }
-    else if(response_data=="false") {
+    else if(response_data=="false")
+    {
         ui->lineEditKorttinumero->setText("");
         ui->lineEditPIN->setText("");
-        qDebug()<<"tunnus ja salasana ei täsmää";
-        ui->labelLoginInfo->setText("Tunnus ja salasana ei täsmää");
-    count ++;
-    if (count == 3){
+        //qDebug()<<"Tunnus ja salasana ei täsmää";
+        //ui->labelLoginInfo->setText("Tunnus ja salasana ei täsmää");
+    count ++;                                                           // Lasketaan kirjautumisyritysten määrä,
+    if (count > 0){                                                    //  ja poistetaan kirjautumismahdollisuus, jos 3 väärää yritystä
+            ui->labelLoginInfo->setText("Tunnus ja salasana ei täsmää. \n Yrityksiä jäljellä: 2");
+            //qDebug()<<"Tunnus ja salasana ei täsmää";
+        }
+    if (count > 1){
+            ui->labelLoginInfo->setText("Tunnus ja salasana ei täsmää. \n Yrityksiä jäljellä: 1");
+            //qDebug()<<"Tunnus ja salasana ei täsmää";
+        }
+    if (count > 2){                                                  //poistetaan kirjautumismahdollisuus
             ui->labelLoginInfo->setText("Kortti lukittu");
-            count = 0;
-       }
+            ui->lineEditKorttinumero->setHidden(1);
+            ui->lineEditPIN->setHidden(1);
+            qDebug()<<"Kortti lukittu.";
+            //count = 0;
+            //this ->close();
+        }
+    if (count < 3){
+            qDebug()<<"Tunnus ja salasana ei täsmää";
+        }
     }
+
+
 
 
     else {
@@ -100,19 +118,6 @@ void MainWindow::loginSlot(QNetworkReply *reply)
 
 }
 
-//int count = 0;
-//for(;;)
-//{
-//    ask_password();
-//    if (password == expected_password)
-//        break;
-//    count++;
-//    if (count == 3)
-//    {
-//       Sleep(300000);    // 5 minutes = 300000 ms.
-//       count = 0;
-//    }
-//}
 
 void MainWindow::on_btnLoginClose_clicked()
 {
