@@ -60,16 +60,17 @@ void MainWindow::loginSlot(QNetworkReply *reply)
     //objDebitValikko=new debitValikko(idTili, idKortti);
     if(response_data !="false" ){
         qDebug()<<"Oikea tunnus, kirjaudutaan...";
+        qDebug()<<Etunimi;
 
         if(Tilin_tyyppi == "Credit" || Tilin_tyyppi == "credit"){
             qDebug()<<"Päästiin credittii";
-            objValinta=new Valinta(idTili, idKortti);
+            objValinta=new Valinta(idTili, idKortti, Etunimi, Sukunimi);
             objValinta->show();
             ui->lineEditKorttinumero->setText("");
             ui->lineEditPIN->setText("");
             ui->labelLoginInfo->setText("");
         }else{
-            objDebitValikko=new debitValikko(idTili, idKortti);
+            objDebitValikko=new debitValikko(idTili, idKortti, Etunimi, Sukunimi);
             objDebitValikko->show();
             ui->lineEditKorttinumero->setText("");
             ui->lineEditPIN->setText("");

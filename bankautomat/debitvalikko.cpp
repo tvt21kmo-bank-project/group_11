@@ -1,7 +1,7 @@
 #include "debitvalikko.h"
 #include "ui_debitvalikko.h"
 
-debitValikko::debitValikko(QString idTili, QString idKortti, QWidget *parent) :
+debitValikko::debitValikko(QString idTili, QString idKortti, QString Etunimi, QString Sukunimi, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::debitValikko)
 {
@@ -9,7 +9,10 @@ debitValikko::debitValikko(QString idTili, QString idKortti, QWidget *parent) :
     timerCounter=0;
     this->idTili=idTili;
     this->idKortti=idKortti;
+    this->Etunimi=Etunimi;
+    this->Sukunimi=Sukunimi;
     qDebug()<<"debit valikko "+this->idTili;
+    ui->labelDebitValikko->setText("Tervetuloa "+Etunimi+" "+Sukunimi);
 
     objDQTimer = new QTimer();
 

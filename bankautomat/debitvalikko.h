@@ -19,7 +19,7 @@ class debitValikko : public QDialog
     Q_OBJECT
 
 public:
-    explicit debitValikko(QString idTili, QString idKortti, QWidget *parent = 0);
+    explicit debitValikko(QString idTili, QString idKortti, QString Etunimi, QString Sukunimi, QWidget *parent = 0);
     ~debitValikko();
 
 private slots:
@@ -43,6 +43,8 @@ private:
     Tp *objTilitapahtumat;
     QString idTili;
     QString idKortti;
+    QString Etunimi;
+    QString Sukunimi;
     QTimer *objDQTimer;
     short timerCounter;
 };

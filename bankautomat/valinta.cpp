@@ -1,7 +1,7 @@
 #include "valinta.h"
 #include "ui_valinta.h"
 
-Valinta::Valinta(QString idTili, QString idKortti, QWidget *parent) :
+Valinta::Valinta(QString idTili, QString idKortti, QString Etunimi, QString Sukunimi, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Valinta)
 {
@@ -9,6 +9,9 @@ Valinta::Valinta(QString idTili, QString idKortti, QWidget *parent) :
     timerCounter=0;
     this->idTili=idTili;
     this->idKortti=idKortti;
+    this->Etunimi=Etunimi;
+    this->Sukunimi=Sukunimi;
+    qDebug()<<Etunimi;
 
     objQTimer = new QTimer();
 
@@ -43,7 +46,7 @@ void Valinta::TimerSlot()
 void Valinta::on_btnCreditValinta_clicked()
 {
 
-    objValikko=new valikko(idTili, idKortti);
+    objValikko=new valikko(idTili, idKortti, Etunimi, Sukunimi);
     objValikko->show();
     timerCounter=0;
     objQTimer->stop();
@@ -52,7 +55,7 @@ void Valinta::on_btnCreditValinta_clicked()
 
 void Valinta::on_btnDebitValinta_clicked()
 {
-    objDebitValikko=new debitValikko(idTili, idKortti);
+    objDebitValikko=new debitValikko(idTili, idKortti, Etunimi, Sukunimi);
     objDebitValikko->show();
     timerCounter=0;
     objQTimer->stop();
