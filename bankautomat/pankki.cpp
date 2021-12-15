@@ -24,6 +24,7 @@ Pankki::Pankki(QString idTili, QString idKortti, QWidget *parent) :
 Pankki::~Pankki()
 {
     delete ui;
+
 }
 
 void Pankki::TimerSlot()
@@ -75,9 +76,14 @@ void Pankki::creditSlot(QNetworkReply *reply)
 {
     QByteArray response_data=reply->readAll();
     qDebug()<<response_data;
-    if(response_data == "1"){
-        ui->labelPankkiInfo->setText("Nosto Onnistui!");
-        ui->le_Summa->setText("");
+    if(response_data == "1")
+    {
+        objNosto=new Nosto(this->idKortti);
+        objNosto->show();
+        this->close();
+        objQTimer->stop();
+//        ui->labelPankkiInfo->setText("Nosto Onnistui!");
+//        ui->le_Summa->setText("");
     }
     else {
         ui->labelPankkiInfo->setText("Nosto epäonnistui, tilillä ei tarpeeksi katetta.");
@@ -104,7 +110,7 @@ void Pankki::on_btnNosto_10_clicked()
     connect(creditManager, SIGNAL(finished (QNetworkReply*)),
     this, SLOT(creditSlot(QNetworkReply*)));
     reply = creditManager->post(request, QJsonDocument(json).toJson());     // jos ongelmia, lisää managereja jokaiselle
-    ui->labelPankkiInfo->setText("");
+    ui->labelPankkiInfo->setText("");    
 }
 
 void Pankki::on_btnNosto_20_clicked()
@@ -232,3 +238,5 @@ void Pankki::on_btnNosto_500_clicked()
     reply = creditManager->post(request, QJsonDocument(json).toJson());
     ui->labelPankkiInfo->setText("");
 }
+
+

@@ -57,13 +57,13 @@ void valikko::TimerSlot()
         }
 }
 
-void valikko::on_btnValikkoClose_clicked()
-{
-    timerCounter=0;
-    objQTimer->stop();
-    this->close();
+//void valikko::on_btnValikkoClose_clicked()
+//{
+//    timerCounter=0;
+//    objQTimer->stop();
+//    this->close();
 
-}
+//}
 
 void valikko::on_btnNostaRahaa_clicked()
 {
