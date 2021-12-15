@@ -5,6 +5,7 @@
 #include <QtNetwork>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
+#include <nosto.h>
 
 namespace Ui {
 class debitPankki;
@@ -20,7 +21,6 @@ public:
 
 
 private slots:
-    void on_btnDebitPankkiClose_clicked();
     void debitSlot(QNetworkReply *reply);
     void TimerSlot();
 
@@ -47,6 +47,7 @@ private:
     QString idTili;
     QString idKortti;
     QTimer *objQTimer;
+    Nosto *objNosto;
     short timerCounter;
 };
 

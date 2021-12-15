@@ -23,7 +23,6 @@ public:
     ~debitValikko();
 
 private slots:
-    void on_btnDebitValikkoClose_clicked();
 
     void on_btnDebitValikkoNosto_clicked();
 

@@ -13,19 +13,6 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="btnDebitPankkiClose">
-   <property name="geometry">
-    <rect>
-     <x>510</x>
-     <y>450</y>
-     <width>121</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Sulje</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="btnDebitNosto10">
    <property name="geometry">
     <rect>
@@ -133,7 +120,7 @@
   <widget class="QLineEdit" name="leDebitSumma">
    <property name="geometry">
     <rect>
-     <x>260</x>
+     <x>270</x>
      <y>350</y>
      <width>131</width>
      <height>31</height>

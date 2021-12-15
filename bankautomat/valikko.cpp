@@ -8,6 +8,7 @@ valikko::valikko(QString idTili, QString idKortti, QString Etunimi, QString Suku
 
     ui->setupUi(this);
     timerCounter=0;
+    this->showFullScreen();
     this->idTili=idTili;
     this->idKortti=idKortti;
     this->Etunimi=Etunimi;

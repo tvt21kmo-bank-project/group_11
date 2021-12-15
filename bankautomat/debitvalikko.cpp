@@ -35,12 +35,6 @@ debitValikko::~debitValikko()
     objTilitapahtumat = nullptr;
 }
 
-void debitValikko::on_btnDebitValikkoClose_clicked()
-{
-    timerCounter=0;
-    objDQTimer->stop();
-    this->close();
-}
 
 void debitValikko::on_btnDebitValikkoNosto_clicked()
 {

@@ -6,26 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>660</width>
-    <height>480</height>
+    <width>1573</width>
+    <height>1000</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="btnDebitValikkoClose">
-   <property name="geometry">
-    <rect>
-     <x>430</x>
-     <y>340</y>
-     <width>121</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Sulje</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="btnDebitValikkoNosto">
    <property name="geometry">
     <rect>

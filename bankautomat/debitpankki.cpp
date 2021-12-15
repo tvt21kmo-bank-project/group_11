@@ -27,19 +27,19 @@ debitPankki::~debitPankki()
     delete ui;
 }
 
-void debitPankki::on_btnDebitPankkiClose_clicked()
-{
-    objQTimer->stop();
-    this->close();
-}
 
 void debitPankki::debitSlot(QNetworkReply *reply)
 {
     QByteArray response_data=reply->readAll();
     qDebug()<<response_data;
     if(response_data == "1"){
-        ui->labelDebitPankkiInfo->setText("Nosto onnistui!");
-        ui->leDebitSumma->setText("");
+        objNosto=new Nosto(this->idKortti);
+        objNosto->show();
+        this->close();
+        objQTimer->stop();
+
+//        ui->labelDebitPankkiInfo->setText("Nosto onnistui!");
+//        ui->leDebitSumma->setText("");
     }
     else {
         ui->labelDebitPankkiInfo->setText("Nosto epäonnistui, tilillä ei tarpeeksi katetta.");
