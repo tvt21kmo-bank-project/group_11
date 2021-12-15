@@ -42,7 +42,7 @@ private slots:
 
     void on_btnNosto_500_clicked();
 
-    void on_commandLinkButton_clicked();
+
 
 private:
     Ui::Pankki *ui;
