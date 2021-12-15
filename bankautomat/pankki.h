@@ -5,6 +5,7 @@
 #include <QtNetwork>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
+#include <nosto.h>
 //#include <QTimer>
 //#include <QObject>
 
@@ -41,6 +42,8 @@ private slots:
 
     void on_btnNosto_500_clicked();
 
+
+
 private:
     Ui::Pankki *ui;
     QNetworkAccessManager *creditManager;
@@ -49,6 +52,7 @@ private:
     QString idKortti;
     QTimer *objQTimer;
     short timerCounter;
+    Nosto *objNosto;
 
 //signals:
     //void    finishProgram();

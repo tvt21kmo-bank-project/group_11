@@ -26,6 +26,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
+    nosto.cpp \
     tp.cpp \
     valikko.cpp \
     pankki.cpp \
@@ -36,6 +37,7 @@ SOURCES += \
 
 HEADERS += \
         mainwindow.h \
+    nosto.h \
     tp.h \
     valikko.h \
     pankki.h \
@@ -46,6 +48,7 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui \
+    nosto.ui \
     tp.ui \
     valikko.ui \
     pankki.ui \
