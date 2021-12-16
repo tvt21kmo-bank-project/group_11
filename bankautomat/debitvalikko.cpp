@@ -7,6 +7,7 @@ debitValikko::debitValikko(QString idTili, QString idKortti, QString Etunimi, QS
 {
     ui->setupUi(this);
     timerCounter=0;
+    this->showFullScreen();
     this->idTili=idTili;
     this->idKortti=idKortti;
     this->Etunimi=Etunimi;
