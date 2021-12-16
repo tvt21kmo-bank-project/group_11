@@ -23,10 +23,10 @@
     </rect>
    </property>
    <property name="text">
-    <string>Palaa</string>
+    <string>Poistu</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>90</x>
