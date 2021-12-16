@@ -24,7 +24,6 @@ public:
     ~valikko();
 
 private slots:
-    void on_btnValikkoClose_clicked();
 
     void on_btnNostaRahaa_clicked();
 
